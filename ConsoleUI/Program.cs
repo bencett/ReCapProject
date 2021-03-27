@@ -20,23 +20,23 @@ namespace ConsoleUI
                 Description = "Mercedes AMG",
             };
 
-            //araba ekleyelim
-            //burada arayüzden arabanın özelliklerini girerek yeni bir araba eklemeye çalışıyoruz
-            //arayüzden Business a bağlanıyoruz
-            //Business daki iş kodlarından (if..... vs..) geçerse DataAccess katmanına bağlanacağız
-            //DataAccess de araba kaydedilecek
+            
+            //burada arayüzden arabanın özelliklerini girerek yeni bir araba eklemeye çalışıyor
+
+            //Business daki iş kodlarından (if..... vs..) geçerse DataAccess katmanına bağlanacak
+            
             carManager.Add(car);
 
 
-            //mevcut arabalrı listeleyelim
-            ArabaListele(carManager);
+            //mevcut arabalrı listeleyecek
+            ListCar(carManager);
 
         }
 
-        private static void ArabaListele(CarManager carManager)
+        private static void ListCar(CarManager carManager)
         {
-            //arabaları listeleyelim
-            Console.WriteLine("mevcut araba listesi : ");
+            //arabaları listelesin
+            Console.WriteLine("Mevcut araba listesi : ");
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.Description);
