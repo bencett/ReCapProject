@@ -9,14 +9,38 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Car car1 = new Car { Id=1,BrandId = 4, ColorId = 2, ModelYear = "2011", DailyPrice = 100, Description = "Focus" };
-            
             CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(car1);
 
-            EfBrandDal brandDal = new EfBrandDal();
-            EfCarDal carDal = new EfCarDal();
-            carDal.GetAll();
+            Car car = new Car()
+            {
+                ColorId = 1,
+                BrandId = 1,
+                DailyPrice = 200,
+                ModelYear = "2021",
+                Description = "Mercedes AMG",
+            };
+
+            //araba ekleyelim
+            //burada arayüzden arabanın özelliklerini girerek yeni bir araba eklemeye çalışıyoruz
+            //arayüzden Business a bağlanıyoruz
+            //Business daki iş kodlarından (if..... vs..) geçerse DataAccess katmanına bağlanacağız
+            //DataAccess de araba kaydedilecek
+            carManager.Add(car);
+
+
+            //mevcut arabalrı listeleyelim
+            ArabaListele(carManager);
+
+        }
+
+        private static void ArabaListele(CarManager carManager)
+        {
+            //arabaları listeleyelim
+            Console.WriteLine("mevcut araba listesi : ");
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.Description);
+            }
         }
     }
 }

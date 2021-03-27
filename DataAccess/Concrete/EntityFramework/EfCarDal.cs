@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-    public class EfColorDal : IColorDal
+    public class EfCarDal : ICarDal
     {
-        public void Add(Color entity)
+        public void Add(Car entity)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete
             }
         }
 
-        public void Delete(Color entity)
+        public void Delete(Car entity)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -32,25 +32,22 @@ namespace DataAccess.Concrete
             }
         }
 
-        public Color Get(Expression<Func<Color, bool>> filter)
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
-            using (RentACarContext context = new RentACarContext())
-            {
-                return context.Set<Color>().SingleOrDefault(filter);
-            }
+            throw new NotImplementedException();
         }
 
-        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             using (RentACarContext context = new RentACarContext())
             {
                 return filter == null
-                    ? context.Set<Color>().ToList()
-                    : context.Set<Color>().Where(filter).ToList();
+                    ? context.Set<Car>().ToList()
+                    : context.Set<Car>().Where(filter).ToList();
             }
         }
 
-        public void Update(Color entity)
+        public void Update(Car entity)
         {
             using (RentACarContext context = new RentACarContext())
             {
