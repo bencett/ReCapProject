@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 
@@ -11,35 +12,9 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            Car car = new Car()
+            foreach (var car in carManager.GetCarDetails())
             {
-                ColorId = 1,
-                BrandId = 1,
-                DailyPrice = 200,
-                ModelYear = "2021",
-                Description = "Mercedes AMG",
-            };
-
-            
-            //burada arayüzden arabanın özelliklerini girerek yeni bir araba eklemeye çalışıyor
-
-            //Business daki iş kodlarından (if..... vs..) geçerse DataAccess katmanına bağlanacak
-            
-            carManager.Add(car);
-
-
-            //mevcut arabalrı listeleyecek
-            ListCar(carManager);
-
-        }
-
-        private static void ListCar(CarManager carManager)
-        {
-            //arabaları listelesin
-            Console.WriteLine("Mevcut araba listesi : ");
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description);
+                Console.WriteLine(car.BrandName+" "+car.CarName+" "+ car.ColorName+" | "+"Daily Price: "+car.DailyPrice);
             }
         }
     }
