@@ -22,7 +22,7 @@ namespace Core.DataAccess.EntityFramework
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
             }
-        }
+        }   
 
         public void Delete(TEntity entity)
         {

@@ -21,6 +21,16 @@ namespace ConsoleUI
 
             });
 
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User
+            {
+                FirstName = "Çetin",
+                LastName = "Ürün",
+                Email = "cetinurun.12@outlook.com",
+                Password = "Bubenimsifrem_4242!"
+
+            });
+
             var result = carManager.GetCarDetails();
             if (result.Success==true)
             {
